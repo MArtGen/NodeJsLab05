@@ -44,34 +44,34 @@
   </div>
 </template>
 <script>
-    import axios from "axios";
-    import { server } from "../../utils/helper";
-    import router from "../../router";
-    export default {
-            data() {            
-                return {
-                    id_order: "",
-                    order_cost: "",
-                    order_date: ""
-                };
-            },
-            created() {    
-                this.order_date = new Date().toLocaleDateString();
-            },
-            methods: {
-                createOrder() {
-                    let orderData = {
-                        id_order: this.id_order,
-                        order_cost: this.order_cost,
-                        order_date: this.order_date
-                    };
-                    this.__submitToServer(orderData);
-                },
-                __submitToServer(data) {
-                    axios.post(`${server.baseURL}/back/order`, data).then(data => {
-                        router.push({ name: "home" });
-                    });
-                }
-            }   
-        };
+import axios from 'axios'
+import { server } from '../../utils/helper'
+import router from '../../router'
+export default {
+  data () {
+    return {
+      id_order: '',
+      order_cost: '',
+      order_date: ''
+    }
+  },
+  created () {
+    this.order_date = new Date().toLocaleDateString()
+  },
+  methods: {
+    createOrder () {
+      let orderData = {
+        id_order: this.id_order,
+        order_cost: this.order_cost,
+        order_date: this.order_date
+      }
+      this.__submitToServer(orderData)
+    },
+    __submitToServer (data) {
+      axios.post(`${server.baseURL}/back/order`, data).then(data => {
+        router.push({ name: 'home' })
+      })
+    }
+  }
+}
 </script>

@@ -49,42 +49,42 @@
   </div>
 </template>
 <script>
-  import { server } from "../../utils/helper";
-  import axios from "axios";
-  import router from "../../router";
-  export default {
-    data() {
-      return {
-        id: 0,
-        order: {}
-      };
-    },
-    created() {
-      this.id = this.$route.params.id;
-      this.getOrder();
-    },
-    methods: {
-      editOrder() {
-        let orderData = {
-          id_order: this.id_order,
-          order_cost: this.order_cost,
-          order_date: this.order_date
-        };
-
-        axios
-          .put(`${server.baseURL}/back/edit?orderID=${this.id}`, orderData)
-          .then(data => {
-            router.push({ name: "home" });
-          });
-      },
-      getOrder() {
-        axios
-          .get(`${server.baseURL}/back/order/${this.id}`)
-          .then(data => (this.post = data.data));
-      },
-      navigate() {
-        router.go(-1);
-      }
+import { server } from '../../utils/helper'
+import axios from 'axios'
+import router from '../../router'
+export default {
+  data () {
+    return {
+      id: 0,
+      order: {}
     }
-  };
+  },
+  created () {
+    this.id = this.$route.params.id
+    this.getOrder()
+  },
+  methods: {
+    editOrder () {
+      let orderData = {
+        id_order: this.id_order,
+        order_cost: this.order_cost,
+        order_date: this.order_date
+      }
+
+      axios
+        .put(`${server.baseURL}/back/edit?orderID=${this.id}`, orderData)
+        .then(data => {
+          router.push({ name: 'home' })
+        })
+    },
+    getOrder () {
+      axios
+        .get(`${server.baseURL}/back/order/${this.id}`)
+        .then(data => (this.post = data.data))
+    },
+    navigate () {
+      router.go(-1)
+    }
+  }
+}
 </script>

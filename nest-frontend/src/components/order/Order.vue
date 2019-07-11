@@ -16,29 +16,29 @@
   </div>
 </template>
 <script>
-    import { server } from "../../utils/helper";
-    import axios from "axios";
-    import router from "../../router";
-    export default {
-        data() {
-            return {
-                id: 0,
-                order: {}
-            };
-        },
-        created() {
-            this.id = this.$route.params.id;
-            this.getOrder();
-        },
-        methods: {
-            getOrder() {
-                axios
-                    .get(`${server.baseURL}/back/order/${this.id}`)
-                    .then(data => (this.order = data.data));
-            },
-            navigate() {
-                router.go(-1);
-            }
-        }
-    };
+import { server } from '../../utils/helper'
+import axios from 'axios'
+import router from '../../router'
+export default {
+  data () {
+    return {
+      id: 0,
+      order: {}
+    }
+  },
+  created () {
+    this.id = this.$route.params.id
+    this.getOrder()
+  },
+  methods: {
+    getOrder () {
+      axios
+        .get(`${server.baseURL}/back/order/${this.id}`)
+        .then(data => (this.order = data.data))
+    },
+    navigate () {
+      router.go(-1)
+    }
+  }
+}
 </script>
