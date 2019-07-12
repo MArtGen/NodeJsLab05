@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-export
-const OrdersSchema = new mongoose.Schema (
+
+export const OrdersSchema = new mongoose.Schema (
     {
         id_order: 
             Number,
